@@ -72,7 +72,7 @@ export const ContactForm = () => {
     return (
         <>
             <Typography
-                variant='h5'
+                variant='h6'
                 sx={{
                     mt: 2,
                     fontWeight: 700,

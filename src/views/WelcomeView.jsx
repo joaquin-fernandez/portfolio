@@ -1,22 +1,12 @@
-import {
-    Grid,
-    IconButton,
-    Typography,
-    useMediaQuery,
-    useTheme,
-} from '@mui/material';
+import { Grid, IconButton, Typography } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import { getIsGreaterThanMediumBreakpoint } from '../helpers/getIsGreaterThanMediumBreakpoint';
 
 export const WelcomeView = () => {
-    const theme = useTheme();
-
-    const isGreaterThanMediumBreakpoint = useMediaQuery(
-        theme.breakpoints.up('md')
-    );
-
+    const isGreaterThanMediumBreakpoint = getIsGreaterThanMediumBreakpoint();
     return (
         <Grid
             container
@@ -31,7 +21,7 @@ export const WelcomeView = () => {
         >
             <Grid container size={12} direction='column' alignItems='center'>
                 <Typography
-                    variant={isGreaterThanMediumBreakpoint ? 'h4' : 'h5'}
+                    variant={isGreaterThanMediumBreakpoint ? 'h4' : 'h6'}
                     className='animate__animated animate__fadeIn animate__delay-0.5s'
                 >
                     Hola 👋🏼, soy
@@ -48,7 +38,7 @@ export const WelcomeView = () => {
                 </Grid>
 
                 <Typography
-                    variant={isGreaterThanMediumBreakpoint ? 'h4' : 'h5'}
+                    variant={isGreaterThanMediumBreakpoint ? 'h4' : 'h6'}
                     className='anim-typewriter line-1 animate__delay-2s'
                     sx={{ mt: '50px' }}
                 >

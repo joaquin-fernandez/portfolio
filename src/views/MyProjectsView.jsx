@@ -82,7 +82,7 @@ export const MyProjectsView = () => {
                 direction='column'
                 alignItems='center'
                 className='section-container'
-                sx={{ p: 3 }}
+                sx={{ pr: 3, pl: 3 }}
             >
                 <SectionTitle title='MIS PROYECTOS' />
 
@@ -99,7 +99,7 @@ export const MyProjectsView = () => {
                     tecnologías modernas y buenas prácticas.
                 </Typography>
 
-                <Grid container size={12} spacing={2} sx={{ mt: 4, mb: 8 }}>
+                <Grid container size={12} spacing={2} sx={{ mt: 4, mb: 4 }}>
                     {projects.map((project, i) => (
                         <Grid
                             size={12}
@@ -233,7 +233,13 @@ export const MyProjectsView = () => {
                                 sx={{
                                     width: '100%',
                                     mb: 2,
-                                    display: { xs: 'block', md: 'none' },
+                                    display: {
+                                        xs:
+                                            projects.length === i + 1
+                                                ? 'none'
+                                                : 'block',
+                                        md: 'none',
+                                    },
                                 }}
                             />
                         </Grid>

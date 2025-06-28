@@ -7,13 +7,12 @@ import {
     MenuItem,
     Slide,
     Toolbar,
-    useMediaQuery,
     useScrollTrigger,
-    useTheme,
 } from '@mui/material';
 import { Logo, ThemeToggle } from './';
 import MenuOutlined from '@mui/icons-material/MenuOutlined';
 import { useEffect, useState } from 'react';
+import { getIsGreaterThanMediumBreakpoint } from '../../helpers';
 
 function HideOnScroll(props) {
     const { children } = props;
@@ -30,15 +29,12 @@ function HideOnScroll(props) {
 
 export const Navbar = (props) => {
     const [anchorEl, setAnchorEl] = useState(null);
-    const theme = useTheme();
     const open = Boolean(anchorEl);
     const trigger = useScrollTrigger({
         disableHysteresis: true,
     });
 
-    const isGreaterThanMediumBreakpoint = useMediaQuery(
-        theme.breakpoints.up('md')
-    );
+    const isGreaterThanMediumBreakpoint = getIsGreaterThanMediumBreakpoint();
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);

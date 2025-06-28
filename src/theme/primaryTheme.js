@@ -44,7 +44,7 @@ export const theme = createTheme({
         ].join(','),
     },
     cssVariables: {
-        colorSchemeSelector: 'class',
+        colorSchemeSelector: 'data',
     },
     transitions: {
         duration: {

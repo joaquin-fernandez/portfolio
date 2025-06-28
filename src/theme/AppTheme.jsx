@@ -3,7 +3,7 @@ import { theme } from './primaryTheme';
 
 export const AppTheme = ({ children }) => {
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme} defaultMode='dark'>
             <CssBaseline />
             {children}
         </ThemeProvider>

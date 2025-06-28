@@ -93,7 +93,7 @@ export const AboutMeView = () => {
                     }}
                     className='styledBox'
                 >
-                    <Typography variant='body1'>
+                    <Typography variant={'body1'}>
                         👨‍💻<b> Software Developer</b> con más de 7 años de
                         experiencia en <b>aplicaciones web escalables</b>,
                         especialmente en el <b>sector financiero.</b> Experto en
@@ -116,6 +116,8 @@ export const AboutMeView = () => {
                         sx={{ mt: 3 }}
                         onChange={onTabChange}
                         className='tabList'
+                        variant='scrollable'
+                        scrollButtons='auto'
                     >
                         <Tab label='💼 Trabajos' value='jobs' />
                         <Tab label='🎓 Estudios' value='education' />

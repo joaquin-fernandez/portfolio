@@ -5,6 +5,7 @@ import {
 import 'react-vertical-timeline-component/style.min.css';
 import { IconEmoji } from './IconEmoji';
 import { Typography } from '@mui/material';
+import { getIsGreaterThanMediumBreakpoint } from '../../helpers/getIsGreaterThanMediumBreakpoint';
 
 const arrEvents = [
     {
@@ -20,6 +21,7 @@ const arrEvents = [
 ];
 
 export const TimelineSection = ({ events = arrEvents, icon = '💼' }) => {
+    const isGreaterThanMediumBreakpoint = getIsGreaterThanMediumBreakpoint();
     return (
         <VerticalTimeline
             className='timelineCustom'
@@ -50,7 +52,9 @@ export const TimelineSection = ({ events = arrEvents, icon = '💼' }) => {
                     icon={<IconEmoji emoji={icon} />}
                 >
                     <Typography
-                        variant='h6'
+                        variant={
+                            isGreaterThanMediumBreakpoint ? 'h6' : 'subtitle1'
+                        }
                         sx={{ lineHeight: '1', fontWeight: 700 }}
                     >
                         {event.title}

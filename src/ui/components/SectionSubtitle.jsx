@@ -1,11 +1,8 @@
-import { Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
+import { getIsGreaterThanMediumBreakpoint } from '../../helpers/getIsGreaterThanMediumBreakpoint';
 
 export const SectionSubtitle = ({ text, sx = {} }) => {
-    const theme = useTheme();
-
-    const isGreaterThanMediumBreakpoint = useMediaQuery(
-        theme.breakpoints.up('md')
-    );
+    const isGreaterThanMediumBreakpoint = getIsGreaterThanMediumBreakpoint();
     return (
         <Grid
             container
@@ -16,7 +13,7 @@ export const SectionSubtitle = ({ text, sx = {} }) => {
             sx={sx}
         >
             <Typography
-                variant={isGreaterThanMediumBreakpoint ? 'h4' : 'h5'}
+                variant={isGreaterThanMediumBreakpoint ? 'h4' : 'h6'}
                 sx={{
                     mt: 2,
                     fontWeight: 700,
@@ -27,7 +24,7 @@ export const SectionSubtitle = ({ text, sx = {} }) => {
                 {text}
             </Typography>
             <Typography
-                variant={isGreaterThanMediumBreakpoint ? 'h4' : 'h5'}
+                variant={isGreaterThanMediumBreakpoint ? 'h4' : 'h6'}
                 sx={{
                     mt: 2,
                     fontWeight: 900,

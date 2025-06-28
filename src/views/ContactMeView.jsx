@@ -9,9 +9,11 @@ import {
 import { ContactForm, SectionTitle } from '../ui';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { useState } from 'react';
+import { getIsGreaterThanMediumBreakpoint } from '../helpers/getIsGreaterThanMediumBreakpoint';
 
 export const ContactMeView = () => {
     const [open, setOpen] = useState(false);
+    const isGreaterThanMediumBreakpoint = getIsGreaterThanMediumBreakpoint();
 
     const onClickCopy = () => {
         navigator.clipboard.writeText('joaquin.fernandez.dev@gmail.com');
@@ -28,8 +30,6 @@ export const ContactMeView = () => {
             sx={{
                 width: '100%',
                 zIndex: 1,
-                pt: 3,
-                pb: 0,
             }}
             justifyContent='center'
             id='contact'
@@ -65,7 +65,9 @@ export const ContactMeView = () => {
                         size={{ xs: 12, md: 6 }}
                     >
                         <Typography
-                            variant='h5'
+                            variant={
+                                isGreaterThanMediumBreakpoint ? 'h5' : 'h6'
+                            }
                             sx={{
                                 fontWeight: 700,
                             }}
@@ -98,7 +100,9 @@ export const ContactMeView = () => {
                             <Typography
                                 sx={{
                                     fontWeight: 700,
-                                    fontSize: '1.1rem',
+                                    fontSize: isGreaterThanMediumBreakpoint
+                                        ? '1.1rem'
+                                        : '1rem',
                                 }}
                             >
                                 joaquin.fernandez.dev@gmail.com

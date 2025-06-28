@@ -1,6 +1,8 @@
 import { Grid, Typography } from '@mui/material';
+import { getIsGreaterThanMediumBreakpoint } from '../../helpers/getIsGreaterThanMediumBreakpoint';
 
 export const CardTitle = ({ text }) => {
+    const isGreaterThanMediumBreakpoint = getIsGreaterThanMediumBreakpoint();
     return (
         <Grid
             container
@@ -11,7 +13,7 @@ export const CardTitle = ({ text }) => {
             spacing={1}
         >
             <Typography
-                variant='h6'
+                variant={isGreaterThanMediumBreakpoint ? 'h6' : 'subtitle1'}
                 sx={{
                     fontWeight: 900,
                 }}
@@ -20,7 +22,7 @@ export const CardTitle = ({ text }) => {
                 {'[ '}
             </Typography>
             <Typography
-                variant='h6'
+                variant={isGreaterThanMediumBreakpoint ? 'h6' : 'subtitle1'}
                 sx={{
                     fontWeight: 500,
                 }}
@@ -28,7 +30,7 @@ export const CardTitle = ({ text }) => {
                 {text}
             </Typography>
             <Typography
-                variant='h6'
+                variant={isGreaterThanMediumBreakpoint ? 'h6' : 'subtitle1'}
                 sx={{
                     fontWeight: 900,
                 }}

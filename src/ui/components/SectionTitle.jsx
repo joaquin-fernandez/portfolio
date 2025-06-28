@@ -1,11 +1,8 @@
-import { Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
+import { getIsGreaterThanMediumBreakpoint } from '../../helpers/getIsGreaterThanMediumBreakpoint';
 
 export const SectionTitle = ({ title }) => {
-    const theme = useTheme();
-
-    const isGreaterThanMediumBreakpoint = useMediaQuery(
-        theme.breakpoints.up('md')
-    );
+    const isGreaterThanMediumBreakpoint = getIsGreaterThanMediumBreakpoint();
 
     return (
         <Grid
@@ -17,7 +14,7 @@ export const SectionTitle = ({ title }) => {
             spacing={1}
         >
             <Typography
-                variant={isGreaterThanMediumBreakpoint ? 'h3' : 'h4'}
+                variant={isGreaterThanMediumBreakpoint ? 'h3' : 'h5'}
                 sx={{
                     fontWeight: 900,
                 }}
@@ -26,7 +23,7 @@ export const SectionTitle = ({ title }) => {
                 {'{'}
             </Typography>
             <Typography
-                variant={isGreaterThanMediumBreakpoint ? 'h3' : 'h4'}
+                variant={isGreaterThanMediumBreakpoint ? 'h3' : 'h5'}
                 sx={{
                     fontWeight: 700,
                 }}
@@ -34,7 +31,7 @@ export const SectionTitle = ({ title }) => {
                 {title}
             </Typography>
             <Typography
-                variant={isGreaterThanMediumBreakpoint ? 'h3' : 'h4'}
+                variant={isGreaterThanMediumBreakpoint ? 'h3' : 'h5'}
                 sx={{
                     fontWeight: 900,
                 }}
