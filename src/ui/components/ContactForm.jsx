@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useAlert, useForm } from '../../hooks';
 import { formValidationsTypes, getFormValidations } from '../../utils';
 import { getEnvVariables } from '../../helpers';
+import { useTranslation } from 'react-i18next';
 
 const initialForm = {
     email: '',
@@ -21,6 +22,7 @@ const { VITE_FORMSPREE_API_KEY } = getEnvVariables();
 
 export const ContactForm = () => {
     const [formSubmitted, setFormSubmitted] = useState(false);
+    const { t } = useTranslation();
     const { showAlert } = useAlert();
     const [state, handleSubmit, reset] = useFormFormspree(
         VITE_FORMSPREE_API_KEY
@@ -48,8 +50,8 @@ export const ContactForm = () => {
     useEffect(() => {
         if (state.succeeded) {
             showAlert({
-                title: '¡Gracias por contactarme!',
-                text: 'Te responderé lo antes posible ⏳',
+                title: t('successTitle'),
+                text: t('successMessage'),
                 icon: 'success',
                 timer: 3500,
             });
@@ -60,8 +62,8 @@ export const ContactForm = () => {
         }
         if (state.errors) {
             showAlert({
-                title: 'Oops!',
-                text: 'Algo salió mal 😕. Revisa tus datos e inténtalo de nuevo. Si el error persiste, podés escribirme directamente a: 📧 joaquin.fernandez.dev@gmail.com',
+                title: t('errorTitle'),
+                text: t('errorMessage'),
                 icon: 'error',
                 timer: 3500,
             });
@@ -79,7 +81,7 @@ export const ContactForm = () => {
                 }}
                 display={{ md: 'none' }}
             >
-                📧 Envíame un mensaje
+                {t('contactFormTitle')}
             </Typography>
             <form onSubmit={onSubmit}>
                 <Typography
@@ -89,11 +91,11 @@ export const ContactForm = () => {
                         fontWeight: 600,
                     }}
                 >
-                    Nombre
+                    {t('nameTitle')}
                 </Typography>
                 <TextField
                     id='name'
-                    placeholder='Ingresa tu nombre'
+                    placeholder={t('namePlaceholder')}
                     type='text'
                     name='nombre'
                     value={nombre}
@@ -111,11 +113,11 @@ export const ContactForm = () => {
                         fontWeight: 600,
                     }}
                 >
-                    Correo electrónico
+                    {t('emailTitle')}
                 </Typography>
                 <TextField
                     id='email'
-                    placeholder='Ingresa tu correo electrónico'
+                    placeholder={t('emailPlaceholder')}
                     type='email'
                     name='email'
                     value={email}
@@ -135,11 +137,11 @@ export const ContactForm = () => {
                         fontWeight: 600,
                     }}
                 >
-                    Mensaje
+                    {t('messageTitle')}
                 </Typography>
                 <TextField
                     id='message'
-                    placeholder='¿En qué puedo ayudarte?'
+                    placeholder={t('messagePlaceholder')}
                     type='text'
                     name='message'
                     value={message}
@@ -165,7 +167,7 @@ export const ContactForm = () => {
                     disabled={state.submitting}
                     fullWidth
                 >
-                    Enviar 📤
+                    {t('sendButton')}
                 </Button>
             </form>
         </>

@@ -3,56 +3,18 @@ import { SectionSubtitle, SectionTitle, TimelineSection } from '../ui';
 import { useState } from 'react';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
-
-const data = {
-    jobs: {
-        icon: '💼',
-        data: [
-            {
-                title: 'Senior Software Engineer',
-                location: 'GlobalLogic Argentina',
-                date: 'Febrero 2018 - Marzo 2025',
-            },
-            {
-                title: 'IT Support',
-                location: 'Universidad Tecnológica Nacional - FRLP',
-                date: 'Junio 2015 - Marzo 2017',
-            },
-        ],
-    },
-    education: {
-        icon: '🎓',
-        data: [
-            {
-                title: 'Ingeniería en Sistemas de Información',
-                location: 'Universidad Tecnológica Nacional - FRLP',
-                date: 'Febrero 2013 - Actualidad',
-            },
-            {
-                title: 'Bachiller en Ciencias Sociales',
-                location: 'Colegio San Cayetano - La Plata',
-                date: 'Marzo 2000 - Diciembre 2012',
-            },
-        ],
-    },
-    certifications: {
-        icon: '📜',
-        data: [
-            {
-                title: 'React: de cero a experto (Hooks y MERN)',
-                location: 'Udemy',
-                date: 'Junio 2025',
-            },
-        ],
-    },
-};
+import { Trans, useTranslation } from 'react-i18next';
+import { aboutMeData } from '../data';
 
 export const AboutMeView = () => {
+    const data = aboutMeData();
     const [tabSelected, setTabSelected] = useState('jobs');
 
     const onTabChange = (event, newValue) => {
         setTabSelected(newValue);
     };
+
+    const { t } = useTranslation();
 
     return (
         <Grid
@@ -75,7 +37,7 @@ export const AboutMeView = () => {
                 className='section-container'
                 sx={{ p: 3 }}
             >
-                <SectionTitle title='SOBRE MÍ' />
+                <SectionTitle title={t('aboutMeTitle')} />
 
                 <Divider
                     sx={{
@@ -94,22 +56,16 @@ export const AboutMeView = () => {
                     className='styledBox'
                 >
                     <Typography variant={'body1'}>
-                        👨‍💻<b> Software Developer</b> con más de 7 años de
-                        experiencia en <b>aplicaciones web escalables</b>,
-                        especialmente en el <b>sector financiero.</b> Experto en
-                        <b> JavaScript, React y metodologías ágiles </b>
-                        🚀. Comprometido con la <b>calidad del código</b> y el
-                        trabajo en equipos interdisciplinarios 🤝. Fuerte
-                        enfoque en la{' '}
-                        <b>
-                            automatización, testing 🧪 y buenas prácticas de
-                            desarrollo
-                        </b>
-                        ✅.
+                        <Trans
+                            i18nKey='aboutMeDescription'
+                            components={{
+                                b: <b />,
+                            }}
+                        ></Trans>
                     </Typography>
                 </Box>
 
-                <SectionSubtitle text='Mi trayectoria' />
+                <SectionSubtitle text={t('trayectoryTitle')} />
 
                 <TabContext value={tabSelected}>
                     <TabList
@@ -119,10 +75,10 @@ export const AboutMeView = () => {
                         variant='scrollable'
                         scrollButtons='auto'
                     >
-                        <Tab label='💼 Trabajos' value='jobs' />
-                        <Tab label='🎓 Estudios' value='education' />
+                        <Tab label={t('jobs')} value='jobs' />
+                        <Tab label={t('education')} value='education' />
                         <Tab
-                            label='📜 Certificaciones'
+                            label={t('certifications')}
                             value='certifications'
                         />
                     </TabList>

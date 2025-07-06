@@ -1,12 +1,16 @@
-import { Grid, IconButton, Typography } from '@mui/material';
+import { Grid, IconButton, Tooltip, Typography } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { getIsGreaterThanMediumBreakpoint } from '../helpers/getIsGreaterThanMediumBreakpoint';
+import { useTranslation } from 'react-i18next';
+import { getResumeLink } from '../data/aboutMe';
 
 export const WelcomeView = () => {
     const isGreaterThanMediumBreakpoint = getIsGreaterThanMediumBreakpoint();
+    const { t } = useTranslation();
+
     return (
         <Grid
             container
@@ -24,7 +28,7 @@ export const WelcomeView = () => {
                     variant={isGreaterThanMediumBreakpoint ? 'h4' : 'h6'}
                     className='animate__animated animate__fadeIn animate__delay-0.5s'
                 >
-                    Hola 👋🏼, soy
+                    {t('welcomeMessage')}
                 </Typography>
                 <Grid
                     container
@@ -33,8 +37,14 @@ export const WelcomeView = () => {
                     justifyContent='center'
                     className='animate__animated animate__fadeInUp animate__delay-1s'
                 >
-                    <Typography className='name'>Joaquín</Typography>
-                    <Typography className='name'>Fernández</Typography>
+                    <Typography
+                        variant='h1'
+                        className='name'
+                        textAlign='center'
+                        maxWidth='80%'
+                    >
+                        {t('name')}
+                    </Typography>
                 </Grid>
 
                 <Typography
@@ -42,7 +52,7 @@ export const WelcomeView = () => {
                     className='anim-typewriter line-1 animate__delay-2s'
                     sx={{ mt: '50px' }}
                 >
-                    Software Developer.
+                    {t('description')}
                 </Typography>
                 <Grid
                     sx={{ mt: '10px' }}
@@ -57,7 +67,7 @@ export const WelcomeView = () => {
                         />
                     </IconButton>
                     <IconButton
-                        href='https://www.linkedin.com/in/joaquin-fernandez-a32570131/'
+                        href='https://www.linkedin.com/in/joaquin-fernandez-dev/'
                         target='_blank'
                     >
                         <LinkedInIcon sx={{ width: '36px', height: '36px' }} />
@@ -68,14 +78,13 @@ export const WelcomeView = () => {
                     >
                         <GitHubIcon sx={{ width: '36px', height: '36px' }} />
                     </IconButton>
-                    <IconButton
-                        href='https://drive.google.com/file/d/1jlVw7xzPPuUhtXQbb9GI4rFeq4Vsa7zK/view?usp=sharing'
-                        target='_blank'
-                    >
-                        <FileDownloadIcon
-                            sx={{ width: '36px', height: '36px' }}
-                        />
-                    </IconButton>
+                    <Tooltip title={t('tooltipResume')} placement='right' arrow>
+                        <IconButton href={getResumeLink()} target='_blank'>
+                            <FileDownloadIcon
+                                sx={{ width: '36px', height: '36px' }}
+                            />
+                        </IconButton>
+                    </Tooltip>
                 </Grid>
             </Grid>
         </Grid>

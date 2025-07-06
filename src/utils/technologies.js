@@ -20,4 +20,7 @@ export const technologies = {
     postman: 'Postman',
     jira: 'Jira',
     jenkins: 'Jenkins',
+    typescript: 'TypeScript',
+    vitejs: 'Vite',
+    npm: 'NPM',
 };

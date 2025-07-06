@@ -10,9 +10,11 @@ import { ContactForm, SectionTitle } from '../ui';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { useState } from 'react';
 import { getIsGreaterThanMediumBreakpoint } from '../helpers/getIsGreaterThanMediumBreakpoint';
+import { Trans, useTranslation } from 'react-i18next';
 
 export const ContactMeView = () => {
     const [open, setOpen] = useState(false);
+    const { t } = useTranslation();
     const isGreaterThanMediumBreakpoint = getIsGreaterThanMediumBreakpoint();
 
     const onClickCopy = () => {
@@ -42,7 +44,7 @@ export const ContactMeView = () => {
                 className='section-container'
                 sx={{ p: 3 }}
             >
-                <SectionTitle title='CONTÁCTAME' />
+                <SectionTitle title={t('contactMeTitle')} />
 
                 <Divider
                     sx={{
@@ -72,18 +74,16 @@ export const ContactMeView = () => {
                                 fontWeight: 700,
                             }}
                         >
-                            🛰️ Construyamos algo que valga la pena
+                            {t('contactMeSubtitle')}
                         </Typography>
                         <Typography variant='body1' sx={{ mt: 0 }}>
-                            🚀 ¿Estás buscando un perfil técnico con enfoque en
-                            calidad y trabajo en equipo?
-                            <br /> Diseño e implemento soluciones web modernas,
-                            con visión a largo plazo y colaboración efectiva.
-                            <br />
-                            <b>
-                                Si creés que puedo aportar a tu equipo o
-                                proyecto, no dudes en escribirme.{' '}
-                            </b>
+                            <Trans
+                                i18nKey='contactMeDescription'
+                                components={{
+                                    b: <b />,
+                                    br: <br />,
+                                }}
+                            />
                         </Typography>
                         <Grid
                             container
@@ -118,10 +118,10 @@ export const ContactMeView = () => {
                                 open={open}
                                 autoHideDuration={3000}
                                 onClose={onClose}
-                                message='Correo copiado al portapapeles ✅'
+                                message={t('toastMessageCopied')}
                                 anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
+                                    vertical: 'bottom',
+                                    horizontal: 'left',
                                 }}
                                 sx={{
                                     '& .MuiSnackbarContent-message': {
@@ -155,7 +155,7 @@ export const ContactMeView = () => {
                         textAlign: 'center',
                     }}
                 >
-                    ¡Gracias por explorar mi trabajo! 🤝 Seguimos en contacto.
+                    {t('thanksMessage')}
                 </Typography>
             </Grid>
         </Grid>

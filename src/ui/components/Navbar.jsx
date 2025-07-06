@@ -13,6 +13,8 @@ import { Logo, ThemeToggle } from './';
 import MenuOutlined from '@mui/icons-material/MenuOutlined';
 import { useEffect, useState } from 'react';
 import { getIsGreaterThanMediumBreakpoint } from '../../helpers';
+import { useTranslation } from 'react-i18next';
+import { LanguageToggle } from './LanguageToggle';
 
 function HideOnScroll(props) {
     const { children } = props;
@@ -29,6 +31,7 @@ function HideOnScroll(props) {
 
 export const Navbar = (props) => {
     const [anchorEl, setAnchorEl] = useState(null);
+    const { t } = useTranslation();
     const open = Boolean(anchorEl);
     const trigger = useScrollTrigger({
         disableHysteresis: true,
@@ -107,28 +110,28 @@ export const Navbar = (props) => {
                                             handleClose(event, 'about-me')
                                         }
                                     >
-                                        📝 SOBRE MÍ
+                                        {t('aboutMeMenu')}
                                     </MenuItem>
                                     <MenuItem
                                         onClick={(event) =>
                                             handleClose(event, 'stack')
                                         }
                                     >
-                                        💻 MI STACK
+                                        {t('stackMenu')}
                                     </MenuItem>
                                     <MenuItem
                                         onClick={(event) =>
                                             handleClose(event, 'projects')
                                         }
                                     >
-                                        📁 MIS PROYECTOS
+                                        {t('projectsMenu')}
                                     </MenuItem>
                                     <MenuItem
                                         onClick={(event) =>
                                             handleClose(event, 'contact')
                                         }
                                     >
-                                        📮 CONTÁCTAME
+                                        {t('contactMenu')}
                                     </MenuItem>
                                 </Menu>
                                 <Logo
@@ -142,19 +145,22 @@ export const Navbar = (props) => {
                                 display={{ xs: 'none', md: 'flex' }}
                             >
                                 <Button variant='text' href='#about-me'>
-                                    Sobre mí
+                                    {t('about')}
                                 </Button>
                                 <Button variant='text' href='#stack'>
-                                    Mi stack
+                                    {t('stack')}
                                 </Button>
                                 <Button variant='text' href='#projects'>
-                                    Mis proyectos
+                                    {t('projects')}
                                 </Button>
                                 <Button variant='text' href='#contact'>
-                                    Contáctame
+                                    {t('contactMe')}
                                 </Button>
                             </Grid>
-                            <ThemeToggle />
+                            <Grid container alignItems='center' spacing={1}>
+                                <LanguageToggle />
+                                <ThemeToggle />
+                            </Grid>
                         </Grid>
                     </Grid>
                 </Toolbar>

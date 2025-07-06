@@ -1,16 +1,11 @@
-import {
-    Box,
-    Typography,
-    Link,
-    Stack,
-    IconButton,
-    Divider,
-} from '@mui/material';
+import { Box, Typography, Stack, IconButton } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
+import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
+    const { t } = useTranslation();
     return (
         <Box
             sx={{
@@ -37,7 +32,7 @@ export const Footer = () => {
                     <GitHubIcon />
                 </IconButton>
                 <IconButton
-                    href='https://linkedin.com/in/joaquin-fernandez-a32570131'
+                    href='https://linkedin.com/in/joaquin-fernandez-dev'
                     target='_blank'
                 >
                     <LinkedInIcon />
@@ -54,7 +49,7 @@ export const Footer = () => {
                 variant='caption'
                 sx={{ fontStyle: 'italic', fontSize: '0.85rem' }}
             >
-                Hecho con 💻, ☕ y pasión por el código.
+                {t('footerText')}
             </Typography>
         </Box>
     );

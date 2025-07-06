@@ -1,12 +1,7 @@
 import { Divider, Grid } from '@mui/material';
 import { SectionTitle, TechStackCard } from '../ui';
-
-const stack = {
-    frontend: ['js', 'html5', 'css3', 'react', 'materialui'],
-    backend: ['nodejs', 'expressjs', 'mongodb', 'mongoose', 'mysql'],
-    testing: ['jest', 'reacttestinglibrary'],
-    tools: ['git', 'github', 'postman', 'jira', 'jenkins'],
-};
+import { stack } from '../data';
+import { useTranslation } from 'react-i18next';
 
 const cardTitles = {
     frontend: 'Front-End 🖥️',
@@ -16,6 +11,7 @@ const cardTitles = {
 };
 
 export const MyStackView = () => {
+    const { t } = useTranslation();
     return (
         <Grid
             container
@@ -34,7 +30,7 @@ export const MyStackView = () => {
                 className='section-container'
                 sx={{ p: 3 }}
             >
-                <SectionTitle title='MI STACK' />
+                <SectionTitle title={t('stackTitle')} />
 
                 <Divider
                     sx={{
